@@ -1,9 +1,4 @@
-# Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=master)](https://travis-ci.org/spring-projects/spring-petclinic/)
-Deploy this sample application to Pivotal Web Services:
-
-<a href="https://push-to.cfapps.io?repo=https%3A%2F%2Fgithub.com%2Fspring-projects%2Fspring-petclinic.git">
-    <img src="https://push-to.cfapps.io/ui/assets/images/Push-to-Pivotal-Light-with-Shadow.svg" width="180" alt="Push" align="center">
-</a>
+# Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=main)](https://travis-ci.org/spring-projects/spring-petclinic/)
 
 ## Understanding the Spring Petclinic application with a few diagrams
 <a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
@@ -29,6 +24,8 @@ Or you can run it from Maven directly using the Spring Boot Maven plugin. If you
 ./mvnw spring-boot:run
 ```
 
+> NOTE: Windows users should set `git config core.autocrlf true` to avoid format assertions failing the build (use `--global` to set that flag globally).
+
 ## In case you find a bug/suggested improvement for Spring Petclinic
 Our issue tracker is available here: https://github.com/spring-projects/spring-petclinic/issues
 
@@ -39,8 +36,7 @@ In its default configuration, Petclinic uses an in-memory database (H2) which
 gets populated at startup with data. The h2 console is automatically exposed at `http://localhost:8080/h2-console`
 and it is possible to inspect the content of the database using the `jdbc:h2:mem:testdb` url.
  
-A similar setup is provided for MySql in case a persistent database configuration is needed.
-Note that whenever the database type is changed, the app needs to be run with a different profile: `spring.profiles.active=mysql` for MySql.
+A similar setup is provided for MySql in case a persistent database configuration is needed. Note that whenever the database type is changed, the app needs to be run with a different profile: `spring.profiles.active=mysql` for MySql.
 
 You could start MySql locally with whatever installer works for your OS, or with docker:
 
@@ -48,13 +44,13 @@ You could start MySql locally with whatever installer works for your OS, or with
 docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 mysql:5.7.8
 ```
 
-Further documentation is provided [here](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/resources/db/mysql/petclinic_db_setup_mysql.txt).
+Further documentation is provided [here](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources/db/mysql/petclinic_db_setup_mysql.txt).
 
 ## Working with Petclinic in your IDE
 
 ### Prerequisites
 The following items should be installed in your system:
-* Java 8 or newer.
+* Java 8 or newer (full JDK not a JRE).
 * git command line tool (https://help.github.com/articles/set-up-git)
 * Your preferred IDE 
   * Eclipse with the m2e plugin. Note: when m2e is available, there is an m2 icon in `Help -> About` dialog. If m2e is
@@ -66,43 +62,39 @@ The following items should be installed in your system:
 ### Steps:
 
 1) On the command line
-```
-git clone https://github.com/spring-projects/spring-petclinic.git
-```
+    ```
+    git clone https://github.com/spring-projects/spring-petclinic.git
+    ```
 2) Inside Eclipse or STS
-```
-File -> Import -> Maven -> Existing Maven project
-```
+    ```
+    File -> Import -> Maven -> Existing Maven project
+    ```
 
-Then either build on the command line `./mvnw generate-resources` or using the Eclipse launcher (right click on project and `Run As -> Maven install`) to generate the css. Run the application main method by right clicking on it and choosing `Run As -> Java Application`.
+    Then either build on the command line `./mvnw generate-resources` or using the Eclipse launcher (right click on project and `Run As -> Maven install`) to generate the css. Run the application main method by right clicking on it and choosing `Run As -> Java Application`.
 
 3) Inside IntelliJ IDEA
+    In the main menu, choose `File -> Open` and select the Petclinic [pom.xml](pom.xml). Click on the `Open` button.
 
-In the main menu, choose `File -> Open` and select the Petclinic [pom.xml](pom.xml). Click on the `Open` button.
+    CSS files are generated from the Maven build. You can either build them on the command line `./mvnw generate-resources` or right click on the `spring-petclinic` project then `Maven -> Generates sources and Update Folders`.
 
-CSS files are generated from the Maven build. You can either build them on the command line `./mvnw generate-resources`
-or right click on the `spring-petclinic` project then `Maven -> Generates sources and Update Folders`.
-
-A run configuration named `PetClinicApplication` should have been created for you if you're using a recent Ultimate
-version. Otherwise, run the application by right clicking on the `PetClinicApplication` main class and choosing
-`Run 'PetClinicApplication'`.
+    A run configuration named `PetClinicApplication` should have been created for you if you're using a recent Ultimate version. Otherwise, run the application by right clicking on the `PetClinicApplication` main class and choosing `Run 'PetClinicApplication'`.
 
 4) Navigate to Petclinic
 
-Visit [http://localhost:8080](http://localhost:8080) in your browser.
+    Visit [http://localhost:8080](http://localhost:8080) in your browser.
 
 
 ## Looking for something in particular?
 
 |Spring Boot Configuration | Class or Java property files  |
 |--------------------------|---|
-|The Main Class | [PetClinicApplication](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java) |
-|Properties Files | [application.properties](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/resources) |
-|Caching | [CacheConfiguration](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java) |
+|The Main Class | [PetClinicApplication](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java) |
+|Properties Files | [application.properties](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources) |
+|Caching | [CacheConfiguration](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java) |
 
 ## Interesting Spring Petclinic branches and forks
 
-The Spring Petclinic master branch in the main [spring-projects](https://github.com/spring-projects/spring-petclinic)
+The Spring Petclinic "main" branch in the [spring-projects](https://github.com/spring-projects/spring-petclinic)
 GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf. There are
 [quite a few forks](https://spring-petclinic.github.io/docs/forks.html) in a special GitHub org
 [spring-petclinic](https://github.com/spring-petclinic). If you have a special interest in a different technology stack
@@ -141,3 +133,51 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
 [spring-petclinic-graphql]: https://github.com/spring-petclinic/spring-petclinic-graphql
 [spring-petclinic-kotlin]: https://github.com/spring-petclinic/spring-petclinic-kotlin
 [spring-petclinic-rest]: https://github.com/spring-petclinic/spring-petclinic-rest
+
+# Deployment with skaffold
+
+## Build the application and deploy to Kubernetes
+
+For a local cluster like Minikube or Docker Desktop you can simply run:
+
+```bash
+skaffold run --port-forward --profile=local --tail
+```
+
+For a remote cluster you need to specify the `default-repo` which is the registry prefix for the image that is being built. For Docker Hub the prefix would be your Docker ID, for other registries it would typically be the registry URL plus your project.
+
+> **NOTE**: You must specify a registry prefix where you have permission to push images.
+
+You can do this globally by running:
+
+```bash
+skaffold config set --global default-repo ${REGISTRY_PREFIX}
+```
+
+Or, you can set it for the current Kubernetes context:
+
+```bash
+skaffold config set default-repo ${REGISTRY_PREFIX}
+```
+
+Finally, you can specify it as part of the `run` command:
+
+```bash
+skaffold run --default-repo ${REGISTRY_PREFIX} --port-forward --tail
+```
+
+The `skaffold run` command will build the container image, deploy the application and port-forward the service to `localhost:8080`
+
+Open another terminal window to interract with the application or Kubernetes API server.
+
+You can use `kubectl get all` to verify that the resources were created.
+
+If you leave out the `--port-forward` option then accessing the application's endpoint varies based on the type of Kubernetes cluster and ingress configuration you are using.
+
+## Delete the application
+
+To delete the deployment and the service from your Kubernetes cluster run:
+
+```bash
+skaffold delete
+```
